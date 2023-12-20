@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Open+Sans:wght@300&family=Oswald:wght@300&family=Raleway:wght@100&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="styleLogin.css">
+    <script src="script.js" defer></script>
+    <title>ЕМИАС</title>
+</head>
+<body>
+<div th:class="header">
+    <div class="container">
+        <div class="header-line">
+            <div class="title-and-logo">
+                <div class="header-logo">
+                    <a th:href="@{/}"><img src="logo.png" alt="">
+                    </a>
+                </div>
+                <div class="div-title">
+                    <a class="title" th:href="@{/}">ЕМИАС</a>
+                </div>
+            </div>
+            <div class="personalAcc">
+                <a class="text" th:href="@{/}">Вход
+                    <img class="innerImg" src="user_username_people_account_avatar_profile_person_icon_258962.png"
+                         alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="header-content">
+        <div class="nav-label">
+            <form th:method="get">
+                <div class="sub-nav">
+                    <span class="label-span">Логин</span><input class="nav-input" th:type="text"
+                                                                placeholder="Введите логин">
+                    <span class="label-span">Пароль</span><input class="nav-input" th:type="password"
+                                                                 placeholder="Введите пароль">
+                    <a class="link-pass" th:href="@{/}">Восстановить пароль</a>
+                    <input class="nav-input-btn" th:type="submit" value="Войти">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/MedicalDB
+    username: postgres
+    password: admin
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: create
+        show_sql: true
+    open-in-view: false

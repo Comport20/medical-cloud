@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Open+Sans:wght@300&family=Oswald:wght@300&family=Raleway:wght@100&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+    <title>ЕМИАС</title>
+</head>
+<body>
+<div th:class="header">
+    <div class="container">
+        <div class="header-line">
+            <div class="title-and-logo">
+                <div class="header-logo">
+                    <a th:href="@{/}"><img src="logo.png" alt="">
+                    </a>
+                </div>
+                <div class="div-title">
+                    <a class="title" th:href="@{/}">ЕМИАС</a>
+                </div>
+            </div>
+            <div class="personalAcc">
+                <a class="text" th:href="@{/}">Личный кабинет
+                    <img class="innerImg" src="user_username_people_account_avatar_profile_person_icon_258962.png" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="hamburger-menu">
+        <button id="burg-btn" class="hamburger-menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+        </button>
+    </div>
+    <div class="header-down">
+        <div class="header-content">
+            <div class="menu-button">
+                <ul class="menu-list">
+                    <li th:class="li-list"><a th:href="@{/}" th:class="menu-btn">
+                        История болезни</a></li>
+                    <li th:class="li-list"><a th:href="@{/}" th:class="menu-btn">
+                        Курс лечения</a></li>
+                    <li th:class="li-list"><a th:href="@{/}" th:class="menu-btn">
+                        Осмотор</a></li>
+                    <li th:class="li-list"><a th:href="@{/}" th:class="menu-btn">
+                        Посещения</a></li>
+                    <li th:class="li-list"><a th:href="@{/}" th:class="menu-btn">
+                        Поддержка</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
