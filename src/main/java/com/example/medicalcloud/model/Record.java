@@ -9,6 +9,9 @@ import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+import static com.example.medicalcloud.model.RecordStatus.RECEPTION_IS_OVER;
 
 @Entity
 @Data
@@ -18,7 +21,7 @@ public class Record {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    private LocalDate dateRecord;
+    private LocalDateTime dateRecord;
     private int office;
     @ManyToOne(
             fetch = FetchType.LAZY,
@@ -35,5 +38,5 @@ public class Record {
     @Enumerated
     private RecordStatus recordStatus;
     @UpdateTimestamp
-    private LocalDate lastUpdatedOn;
+    private LocalDateTime lastUpdatedOn;
 }
