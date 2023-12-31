@@ -11,7 +11,6 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Disease {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -21,4 +20,10 @@ public class Disease {
 
     @ManyToMany(mappedBy = "diseases")
     private List<MedicalHistory> medicalHistories = new ArrayList<>();
+    public void addMedicalHistory(MedicalHistory medicalHistory){
+        this.medicalHistories.add(medicalHistory);
+    }
+    public Disease(String title) {
+        this.title = title;
+    }
 }

@@ -1,7 +1,6 @@
 package com.example.medicalcloud.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +10,6 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -28,17 +26,26 @@ public class Patient {
 
     private String email;
 
+    public Patient(String fullName, int insurancePolicy, int passport, int phone, String email) {
+        this.fullName = fullName;
+        this.insurancePolicy = insurancePolicy;
+        this.passport = passport;
+        this.phone = phone;
+        this.email = email;
+    }
+
     @OneToMany(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL,
             mappedBy = "patient"
     )
-    private List<Record> records = new ArrayList<>();
-
+    private List<Records> records = new ArrayList<>();
+    public void addRecord(Records records){
+        this.records.add(records);
+    }
     @OneToOne(
             fetch = FetchType.LAZY,
-            optional = false,
-            cascade = CascadeType.ALL
+            optional = false
     )
     @JoinColumn(unique = true)
     private MedicalHistory medicalHistory;

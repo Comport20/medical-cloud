@@ -11,13 +11,16 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class MedicalHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private String description;
+
+    public MedicalHistory(String description) {
+        this.description = description;
+    }
 
     @OneToOne(mappedBy = "medicalHistory")
     private Patient patient;
@@ -30,4 +33,7 @@ public class MedicalHistory {
     )
     private List<Disease> diseases = new ArrayList<>();
 
+    public void addDisease(Disease disease){
+        diseases.add(disease);
+    }
 }

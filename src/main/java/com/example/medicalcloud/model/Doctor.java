@@ -1,7 +1,6 @@
 package com.example.medicalcloud.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,8 +10,13 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Doctor {
+    public Doctor(String fullName, String login, String password) {
+        this.fullName = fullName;
+        this.login = login;
+        this.password = password;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
@@ -25,7 +29,6 @@ public class Doctor {
 
     @ManyToOne(
             fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
             optional = false
     )
     private Specialization specialization;
@@ -35,5 +38,9 @@ public class Doctor {
             cascade = CascadeType.ALL,
             mappedBy = "doctor"
     )
-    private List<Record> records = new ArrayList<>();
+    private List<Records> records = new ArrayList<>();
+
+    public void addRecords(Records records){
+        this.records.add(records);
+    }
 }

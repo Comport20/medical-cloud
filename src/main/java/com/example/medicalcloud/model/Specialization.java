@@ -11,7 +11,6 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Specialization {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -25,4 +24,10 @@ public class Specialization {
             mappedBy = "specialization"
     )
     private List<Doctor> doctors = new ArrayList<>();
+    public void addDoctor(Doctor doctor){
+        doctors.add(doctor);
+    }
+    public Specialization(String nameSpecialization) {
+        this.nameSpecialization = nameSpecialization;
+    }
 }
