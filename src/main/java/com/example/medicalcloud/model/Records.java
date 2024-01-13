@@ -1,23 +1,26 @@
 package com.example.medicalcloud.model;
 
 import com.example.medicalcloud.repositories.RecordRepository;
+import com.example.medicalcloud.trigger.RecordsTrigger;
 import jakarta.persistence.*;
-import jakarta.transaction.Transactional;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Formula;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static com.example.medicalcloud.model.RecordStatus.RECEPTION_IS_OVER;
-
+@Component
 @Entity
 @Data
 @NoArgsConstructor
+@Slf4j
 @Table(name="record")
 public class Records {
     @Id
@@ -47,14 +50,16 @@ public class Records {
     @PostUpdate
     public void postUpdateCalculateTime(){
         if(recordStatus == RECEPTION_IS_OVER){
-            if(dateRecord.getHour() - lastUpdatedOn.getHour() > 1){
-                updateByLocalDateTime(dateRecord);
+            log.info("Info:{},{}",dateRecord.getHour(),lastUpdatedOn.getHour());
+            if(lastUpdatedOn.getHour() - dateRecord.getHour()  >= 1){
+
             }
         }
     }
-    @Modifying
-    @Query(value = "update record set date_record = date_record + interval '1 hour' where DATE(dateRecord) = DATE(?1)",
-            nativeQuery = true)
-    public void updateByLocalDateTime(LocalDateTime localDateTime){
-    }
+//    @Modifying
+//    @Query(value = "update record set date_record = date_record + interval '1 hour'" +
+//            "where date(date_record) = ?1" +
+//            "and record_status = 0;",
+//            nativeQuery = true)
+//    public void updateByLocalDateTime(String localDate){}
 }

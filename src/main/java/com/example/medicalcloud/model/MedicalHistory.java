@@ -25,7 +25,7 @@ public class MedicalHistory {
     @OneToOne(mappedBy = "medicalHistory")
     private Patient patient;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name = "Medical_History_Disease",
             joinColumns = @JoinColumn(name = "MedicalHistory_ID"),
