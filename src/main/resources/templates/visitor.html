@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Open+Sans:wght@300&family=Oswald:wght@300&family=Raleway:wght@100&display=swap"
           rel="stylesheet">
     <script src="script.js" defer></script>
-    <title>Пациент</title>
+    <title>Посещения</title>
 </head>
 <body>
 <div th:class="header">
@@ -18,11 +18,11 @@
         <div class="header-line">
             <div class="title-and-logo">
                 <div class="header-logo">
-                    <a th:href="@{/inspection}"><img src="logo.png" alt="">
+                    <a th:href="@{/}"><img src="logo.png" alt="">
                     </a>
                 </div>
                 <div class="div-title">
-                    <a class="title" th:href="@{/inspection}">ЕМИАС</a>
+                    <a class="title" th:href="@{/}">ЕМИАС</a>
                 </div>
             </div>
             <div class="personalAcc">
@@ -48,22 +48,28 @@
                         Осмотор</a></li>
                     <li th:class="li-list"><a th:href="@{/visitor}" th:class="menu-btn">
                         Посещения</a></li>
-                    <li th:class="li-list"><a th:href="@{/support}" th:class="menu-btn">
+                    <li th:class="li-list"><a th:href="@{/}" th:class="menu-btn">
                         Поддержка</a></li>
                 </ul>
             </div>
-            <form class="form-patient" th:action="@{/patient}" method="post">
-                <div class="patient-content">
-                    <ol class="patient-ol">
-                        <li class="patient-li" th:text="'Имя: ' + ${patientObj.fullName}"></li>
-                        <li class="patient-li" th:text="'Телефон: ' + ${patientObj.phone}"></li>
-                        <li class="patient-li" th:text="'Полис: ' + ${patientObj.insurancePolicy}"></li>
-                        <li class="patient-li" th:text="'Медицинская история: ' + ${patientObj.medicalHistory.id}"></li>
-                    </ol>
-                    <input class="form-button-patient" type="submit" value="Закончить осмотр">
-                    <a th:href="@{/inspection}" class="form-button-patient">Отмена</a>
+            <div class="table-header-visitor">
+                <div class="header-data">
+                    <p class="visitor-p">Имя</p>
+                    <p class="visitor-p">Полис</p>
+                    <p class="visitor-p">Email</p>
+                    <p class="visitor-p">Телефон</p>
                 </div>
-            </form>
+                <div class="pre-list-visitor" th:each="patient : ${listRecordStatus}">
+                    <a class="href-visitor" th:href="@{/patient(idP = ${patient.patient.id},idR=${patient.id})}">
+                        <div class="list-visitor">
+                            <p class="visitor-p-data" th:text="${patient.patient.fullName}"></p>
+                            <p class="visitor-p-data" th:text="${patient.patient.insurancePolicy}"></p>
+                            <p class="visitor-p-data" th:text="${patient.patient.email}"></p>
+                            <p class="visitor-p-data" th:text="${patient.patient.phone}"></p>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

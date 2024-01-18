@@ -2,7 +2,6 @@ package com.example.medicalcloud.controller;
 
 import com.example.medicalcloud.model.Records;
 import com.example.medicalcloud.repositories.RecordRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,7 @@ public class InspectionController {
     }
 
     @GetMapping
-    public String getInspection(Model model){
+    public String getInspection(){
         return "inspection";
     }
     @ModelAttribute(name="recordsList")

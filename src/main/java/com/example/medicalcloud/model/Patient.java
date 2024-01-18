@@ -22,11 +22,11 @@ public class Patient {
     private int passport;
 
     @Column(length = 11)
-    private int phone;
+    private long phone;
 
     private String email;
 
-    public Patient(String fullName, int insurancePolicy, int passport, int phone, String email) {
+    public Patient(String fullName, int insurancePolicy, int passport, long phone, String email) {
         this.fullName = fullName;
         this.insurancePolicy = insurancePolicy;
         this.passport = passport;

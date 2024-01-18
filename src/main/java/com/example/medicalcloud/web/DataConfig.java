@@ -89,7 +89,7 @@ public class DataConfig {
     private Patient generatePatient(int symbol) {
         return new Patient(String.valueOf((char) symbol),
                 symbol + 10000, symbol + 10_00_0000,
-                8_999_00_00 + symbol, symbol + "@");
+                8_999_000_00_00L + symbol, symbol + "@");
     }
 
     private Patient setMedicalHistoryPatient(MedicalHistory medicalHistory, Patient patient) {

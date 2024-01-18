@@ -227,3 +227,50 @@ body{
 .form-button-patient:hover{
     background-color: #E5E4E2;
 }
+.header-data{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.table-header-visitor{
+    position: absolute;
+    left: 300px;
+    top: 130px;
+    height: 70vh;
+    width: 70vw;
+}
+.list-visitor{
+    width: 104%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.visitor-p{
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+}
+.list-visitor p:nth-child(1){
+    padding-right: 90px;
+}
+.list-visitor p:nth-child(2){
+    padding-right: 80px;
+}
+.list-visitor p:nth-child(3){
+    padding-right: 70px;
+}
+.list-visitor:hover{
+    background-color: white;
+}
+.href-visitor {
+    text-decoration: none;
+    color: black;
+}
+.pre-list-visitor{
+}
+.support{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}

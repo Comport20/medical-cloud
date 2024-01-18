@@ -17,15 +17,15 @@
         <div class="header-line">
             <div class="title-and-logo">
                 <div class="header-logo">
-                    <a th:href="@{/}"><img src="logo.png" alt="">
+                    <a th:href="@{/inspection}"><img src="logo.png" alt="">
                     </a>
                 </div>
                 <div class="div-title">
-                    <a class="title" th:href="@{/}">ЕМИАС</a>
+                    <a class="title" th:href="@{/inspection}">ЕМИАС</a>
                 </div>
             </div>
             <div class="personalAcc">
-                <a class="text" th:href="@{/}">Личный кабинет
+                <a class="text" th:href="@{/login}">Личный кабинет
                     <img class="innerImg" src="user_username_people_account_avatar_profile_person_icon_258962.png" alt="">
                 </a>
             </div>
@@ -42,15 +42,11 @@
         <div class="header-content">
             <div class="menu-button">
                 <ul class="menu-list">
-                    <li th:class="li-list"><a th:href="@{/}" th:class="menu-btn">
-                        История болезни</a></li>
-                    <li th:class="li-list"><a th:href="@{/}" th:class="menu-btn">
-                        Курс лечения</a></li>
                     <li th:class="li-list"><a th:href="@{/inspection}" th:class="menu-btn">
                         Осмотор</a></li>
-                    <li th:class="li-list"><a th:href="@{/}" th:class="menu-btn">
+                    <li th:class="li-list"><a th:href="@{/visitor}" th:class="menu-btn">
                         Посещения</a></li>
-                    <li th:class="li-list"><a th:href="@{/}" th:class="menu-btn">
+                    <li th:class="li-list"><a th:href="@{/support}" th:class="menu-btn">
                         Поддержка</a></li>
                 </ul>
             </div>
