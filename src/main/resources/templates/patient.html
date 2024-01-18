@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Open+Sans:wght@300&family=Oswald:wght@300&family=Raleway:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Open+Sans:wght@300&family=Oswald:wght@300&family=Raleway:wght@100&display=swap"
+          rel="stylesheet">
     <script src="script.js" defer></script>
     <title>ЕМИАС</title>
 </head>
@@ -26,16 +27,17 @@
             </div>
             <div class="personalAcc">
                 <a class="text" th:href="@{/}">Личный кабинет
-                    <img class="innerImg" src="user_username_people_account_avatar_profile_person_icon_258962.png" alt="">
+                    <img class="innerImg" src="user_username_people_account_avatar_profile_person_icon_258962.png"
+                         alt="">
                 </a>
             </div>
         </div>
     </div>
     <div class="hamburger-menu">
         <button id="burg-btn" class="hamburger-menu-btn">
-        <span></span>
-        <span></span>
-        <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
     </div>
     <div class="header-down">
@@ -54,6 +56,18 @@
                         Поддержка</a></li>
                 </ul>
             </div>
+            <form class="form-patient" th:action="@{/patient}" method="post">
+                <div class="patient-content">
+                    <ol class="patient-ol">
+                        <li class="patient-li" th:text="'Имя: ' + ${patientObj.fullName}"></li>
+                        <li class="patient-li" th:text="'Телефон: ' + ${patientObj.phone}"></li>
+                        <li class="patient-li" th:text="'Полис: ' + ${patientObj.insurancePolicy}"></li>
+                        <li class="patient-li" th:text="'Медицинская история: ' + ${patientObj.medicalHistory.id}"></li>
+                    </ol>
+                    <input class="form-button-patient" type="submit" value="Закончить осмотр">
+                    <a th:href="@{/inspection}" class="form-button-patient">Отмена</a>
+                </div>
+            </form>
         </div>
     </div>
 </div>

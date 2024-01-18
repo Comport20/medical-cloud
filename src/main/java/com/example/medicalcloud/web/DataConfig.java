@@ -1,22 +1,19 @@
-package com.example.medicalcloud;
+package com.example.medicalcloud.web;
 
 import com.example.medicalcloud.model.*;
-import com.example.medicalcloud.model.Records;
 import com.example.medicalcloud.repositories.*;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-@SpringBootTest
-class MedicalCloudApplicationTests {
+@Configuration
+public class DataConfig {
     @Autowired
     public DiseaseRepository diseaseRepository;
     @Autowired
@@ -30,16 +27,15 @@ class MedicalCloudApplicationTests {
     @Autowired
     public MedicalHistoryRepository medicalHistoryRepository;
 
-    @Test
-    void contextLoads() throws InterruptedException {
-        int symbolPatient = 65;
-        int office = 100;
-        startData(symbolPatient, office);
-        Optional<Records> records = recordRepository.findById(1L);
-        records.get().setRecordStatus(RecordStatus.RECEPTION_IS_OVER);
-        recordRepository.save(records.get());
-        assertEquals(1,recordRepository.findById(1L).get().getIndicateRecord());
+    @Bean
+    public ApplicationRunner applicationRunner() {
+        return args -> {
+            int symbolPatient = 65;
+            int office = 100;
+            startData(symbolPatient, office);
+        };
     }
+
     private void startData(int symbolPatient, int office) throws InterruptedException {
         Specialization specialization = new Specialization("Direction");
         Patient patient = generatePatient(symbolPatient++);
@@ -50,6 +46,7 @@ class MedicalCloudApplicationTests {
         generateRecord(patient, doctor, office);
         loadRecordData(doctor, disease, office, symbolPatient);
     }
+
     private void saveData(Specialization specialization, Doctor doctor,
                           MedicalHistory medicalHistory, Disease disease,
                           Patient patient) {
@@ -65,6 +62,7 @@ class MedicalCloudApplicationTests {
         patient.setMedicalHistory(medicalHistory);
         patientRepository.save(patient);
     }
+
     private void generateRecord(Patient patient, Doctor doctor, int office) {
         Records records = new Records(LocalDateTime.of(
                 LocalDate.now(), LocalTime.of(
@@ -76,7 +74,8 @@ class MedicalCloudApplicationTests {
         records.setDoctor(doctor);
         recordRepository.save(records);
     }
-    private void loadRecordData(Doctor doctor, Disease disease, int office, int symbolPatient) throws InterruptedException{
+
+    private void loadRecordData(Doctor doctor, Disease disease, int office, int symbolPatient) throws InterruptedException {
         for (int i = 0; i < 2; i++) {
             Thread.sleep(1000);
             MedicalHistory medicalHistory1 = generateMedicalHistory(disease);
@@ -86,11 +85,13 @@ class MedicalCloudApplicationTests {
             generateRecord(patient, doctor, office);
         }
     }
+
     private Patient generatePatient(int symbol) {
         return new Patient(String.valueOf((char) symbol),
                 symbol + 10000, symbol + 10_00_0000,
                 8_999_00_00 + symbol, symbol + "@");
     }
+
     private Patient setMedicalHistoryPatient(MedicalHistory medicalHistory, Patient patient) {
         patient.setMedicalHistory(medicalHistory);
         return patient;
@@ -101,3 +102,5 @@ class MedicalCloudApplicationTests {
         return medicalHistory;
     }
 }
+
+

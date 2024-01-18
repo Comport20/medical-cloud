@@ -2,8 +2,9 @@ package com.example.medicalcloud.controller;
 
 import com.example.medicalcloud.model.Records;
 import com.example.medicalcloud.repositories.RecordRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,18 +12,18 @@ import java.util.List;
 @Controller
 @RequestMapping("/inspection")
 public class InspectionController {
-    @Autowired
-    RecordRepository recordRepository;
+    final RecordRepository recordRepository;
+
+    public InspectionController(RecordRepository recordRepository) {
+        this.recordRepository = recordRepository;
+    }
+
     @GetMapping
-    public String getInspection(){
+    public String getInspection(Model model){
         return "inspection";
     }
-    @ModelAttribute
+    @ModelAttribute(name="recordsList")
     public List<Records> recordsList(){
         return recordRepository.findAll();
     }
-//    @PostMapping
-//    public void postData(@RequestBody ){
-//
-//    }
 }

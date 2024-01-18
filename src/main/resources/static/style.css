@@ -76,11 +76,11 @@ body{
     position: relative;
 }
 .hamburger-menu-btn.close span{
-    width: 30px;
+    width: 25px;
     height: 2px;
     background-color: black;
     position: absolute;
-    left: 5px;
+    left: 6px;
     transition: all 0.4s;
 }
 .hamburger-menu-btn.close span:nth-child(1){
@@ -148,6 +148,7 @@ body{
     font-size: 22px;
     font-family: 'Lato', sans-serif;
     box-shadow: 0 0 0;
+    position: relative;
 }
 .menu-btn:hover {
     color: black;
@@ -155,4 +156,74 @@ body{
     box-shadow: 0 1px 0 rgba(0,0,0,.4);
 }
 .header-down{
+}
+.table-header{
+    position: absolute;
+    left: 300px;
+    top: 130px;
+    height: 70vh;
+    width: 70vw;
+    display: inline;
+}
+.table-style{
+}
+.th-style-inspection{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 1000;
+    font-size: 22px;
+    padding-right: 50px;
+    padding-left: 50px;
+    border-bottom-style: solid;
+    border-width: 1px;
+    align-content: space-around;
+}
+.td-style-inspection{
+    padding-right: 50px;
+    padding-left: 50px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 1000;
+    font-size: 22px;
+    text-align: center;
+}
+.href-inspection{
+    text-decoration: none;
+    color: black;
+}
+.tr-patient:hover{
+    transition: 0.7s;
+}
+.tr-patient:hover{
+    background-color: aliceblue;
+}
+.form-patient{
+    position: absolute;
+    left: 300px;
+    top: 130px;
+}
+.patient-ol{
+    list-style: none;
+    position: relative;
+}
+.patient-li{
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    padding-top: 20px;
+}
+.form-button-patient{
+    outline: none;
+    border: none;
+    text-decoration: none;
+    margin-left: 40px;
+    display: inline-block;
+    font-size: 20px;
+    color: black;
+    background-color: white;
+    padding: 0 4px 0 4px;
+    font-family: 'Lato', sans-serif;
+    transition: 0.3s;
+}
+.form-button-patient:hover{
+    background-color: #E5E4E2;
 }

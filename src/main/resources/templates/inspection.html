@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Open+Sans:wght@300&family=Oswald:wght@300&family=Raleway:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Open+Sans:wght@300&family=Oswald:wght@300&family=Raleway:wght@100&display=swap"
+          rel="stylesheet">
     <script src="script.js" defer></script>
-    <title>ЕМИАС</title>
+    <title>Осмотр</title>
 </head>
 <body>
 <div th:class="header">
@@ -26,7 +27,8 @@
             </div>
             <div class="personalAcc">
                 <a class="text" th:href="@{/}">Личный кабинет
-                    <img class="innerImg" src="user_username_people_account_avatar_profile_person_icon_258962.png" alt="">
+                    <img class="innerImg" src="user_username_people_account_avatar_profile_person_icon_258962.png"
+                         alt="">
                 </a>
             </div>
         </div>
@@ -46,13 +48,48 @@
                         История болезни</a></li>
                     <li th:class="li-list"><a th:href="@{/}" th:class="menu-btn">
                         Курс лечения</a></li>
-                    <li th:class="li-list"><a th:href="@{/}" th:class="menu-btn">
+                    <li th:class="li-list"><a th:href="@{/inspection}" th:class="menu-btn">
                         Осмотор</a></li>
                     <li th:class="li-list"><a th:href="@{/}" th:class="menu-btn">
                         Посещения</a></li>
                     <li th:class="li-list"><a th:href="@{/}" th:class="menu-btn">
                         Поддержка</a></li>
                 </ul>
+            </div>
+            <div class="table-header">
+                <table class="table-style">
+                    <tr>
+                        <th class="th-style-inspection">Ф.И.О
+                        </th>
+                        <th class="th-style-inspection">Время записи
+                        </th>
+                        <th class="th-style-inspection">Статус записи
+                        </th>
+                        <th class="th-style-inspection">Кабинет
+                        </th>
+                    </tr>
+                    <tr th:if="${recordsList.isEmpty()}">
+                        <td class="td-style-inspection">List is empty</td>
+                        <td class="td-style-inspection">List is empty</td>
+                        <td class="td-style-inspection">List is empty</td>
+                        <td class="td-style-inspection">List is empty</td>
+                    </tr>
+                    <tr class="tr-patient" th:each="record : ${recordsList}">
+                        <td class="td-style-inspection">
+                            <a class="href-inspection" th:href="@{/patient(idP = ${record.patient.id},idR=${record.id})}" th:text="${record.patient.fullName}"></a>
+                        </td>
+                        <td class="td-style-inspection">
+                            <a class="href-inspection" th:href="@{/patient(idP = ${record.patient.id},idR=${record.id})}" th:text="${record.dateRecord}"></a>
+                        </td>
+                        <td class="td-style-inspection">
+                            <a class="href-inspection" th:href="@{/patient(idP = ${record.patient.id},idR=${record.id})}" th:text="${record.recordStatus}"></a>
+                        </td>
+<!--                        yyyy-MM-dd HH:mm-->
+                        <td class="td-style-inspection">
+                            <a class="href-inspection" th:href="@{/patient(idP = ${record.patient.id},idR=${record.id})}" th:text="${record.office}"></a>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
